@@ -1,3 +1,3 @@
 #include <iostream>
-#include "./src/stack.cpp"
+#include ".\src\correct_bracket_sequence.cpp"
 

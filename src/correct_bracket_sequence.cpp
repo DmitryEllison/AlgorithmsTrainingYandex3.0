@@ -1,6 +1,5 @@
-#include <iostream>
-#include <cstdio>
 #include <cstring>
+#include <iostream>
 
 #define STACK_MAX_SIZE 64
 typedef int T;
@@ -42,40 +41,38 @@ bool is_empty(stack_t* stack) {
     return stack->size == 0;
 }
 
-int test() {
+bool test() {
     stack_t stack;
     stack.size = 0;
+    char iterator;
 
-    std::string line;
-    int temp;
-
-    while (true) {
-        /// Парсер команд
-        std::cin >> line;
-
-        if (line == "push"){
-            std::cin >> temp;
-            push(&stack, temp);
-            printf("ok\n");
-        } else if (line == "pop") {
-            if (is_empty(&stack))
-                printf("error\n");
-            else
-                printf("%d\n", pop(&stack));
-        } else if ( line == "back") {
-            if (is_empty(&stack))
-                printf("error\n");
-            else
-                printf("%d\n", back(&stack));
-        } else if ( line =="size") {
-            printf("%zu\n", size(&stack));
-        } else if ( line =="clear") {
-            clear(&stack);
-            printf("ok\n");
-        } else if (line =="exit") {
-            printf("bye");
-            break;
+    while (std::cin >> iterator) {
+        if (iterator == '(') {
+            push(&stack, 1);
+        } else if (iterator == '[') {
+            push(&stack, 2);
+        } else if (iterator == '{') {
+            push(&stack, 3);
+        } else if (iterator == ')') {
+            if (back(&stack) != 1)
+                return false;
+            pop(&stack);
+        } else if (iterator == ']') {
+            if (back(&stack) != 2)
+                return false;
+            pop(&stack);
+        } else if (iterator == '}') {
+            if (back(&stack) != 3)
+                return false;
+            pop(&stack);
         }
     }
 
+    if (stack.size != 0)
+        return false;
+    return true;
+}
+
+int main() {
+    printf(test() ? "yes" : "no");
 }
