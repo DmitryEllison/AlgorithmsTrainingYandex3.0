@@ -1,3 +1,3 @@
 #include <iostream>
-#include ".\src\correct_bracket_sequence.cpp"
+#include ".\src\postfix_notation.cpp"
 

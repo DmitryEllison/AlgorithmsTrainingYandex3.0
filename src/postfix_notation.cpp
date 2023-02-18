@@ -41,38 +41,10 @@ bool is_empty(stack_t* stack) {
     return stack->size == 0;
 }
 
-bool check_sequence() {
-    stack_t stack;
-    stack.size = 0;
-    char iterator;
+int ma_test() {
 
-    while (std::cin >> iterator) {
-        if (iterator == '(') {
-            push(&stack, 1);
-        } else if (iterator == '[') {
-            push(&stack, 2);
-        } else if (iterator == '{') {
-            push(&stack, 3);
-        } else if (iterator == ')') {
-            if (back(&stack) != 1)
-                return false;
-            pop(&stack);
-        } else if (iterator == ']') {
-            if (back(&stack) != 2)
-                return false;
-            pop(&stack);
-        } else if (iterator == '}') {
-            if (back(&stack) != 3)
-                return false;
-            pop(&stack);
-        }
-    }
-
-    if (stack.size != 0)
-        return false;
-    return true;
 }
 
-int ma_test() {
-    printf(check_sequence() ? "yes" : "no");
+int main() {
+    return 0;
 }

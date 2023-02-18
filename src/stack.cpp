@@ -42,7 +42,7 @@ bool is_empty(stack_t* stack) {
     return stack->size == 0;
 }
 
-int test() {
+int ma_test() {
     stack_t stack;
     stack.size = 0;
 

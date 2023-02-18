@@ -3,4 +3,4 @@ project(algoritms_cpp)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(algoritms_cpp/src/correct_bracket_sequence.cpp src/correct_bracket_sequence.cpp)
+add_executable(main.cpp src/postfix_notation.cpp)
