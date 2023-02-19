@@ -3,4 +3,4 @@ project(algoritms_cpp)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(main.cpp src/postfix_notation.cpp)
+add_executable(main.cp src/pretty_string.cpp)

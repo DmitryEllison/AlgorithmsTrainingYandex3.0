@@ -5,7 +5,7 @@
 #define STACK_MAX_SIZE 64
 typedef int T;
 
-typedef struct STACK_t_CREATE {
+typedef struct MA_STACK_CREATE {
     T data[STACK_MAX_SIZE];
     size_t size;
 } stack_t;

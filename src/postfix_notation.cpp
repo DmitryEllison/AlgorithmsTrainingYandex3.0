@@ -1,11 +1,12 @@
 #include <cstring>
 #include <iostream>
+#include <sstream>
 
-#define STACK_MAX_SIZE 64
+#define STACK_MAX_SIZE 100000
 typedef int T;
 
 typedef struct STACK_t_CREATE {
-    T data[STACK_MAX_SIZE];
+    T data[INT16_MAX];
     size_t size;
 } stack_t;
 
@@ -42,9 +43,31 @@ bool is_empty(stack_t* stack) {
 }
 
 int ma_test() {
+    stack_t stack;
+    stack.size = 0;
 
+    char temp;
+    std::string line;
+    std::getline(std::cin, line);
+    std::istringstream iss(line);
+    while(iss >> temp) {
+        if ((int) temp >= 48 && (int) temp <= 57) {
+            push(&stack, temp - 48);
+        } else if (temp == '+') {
+            push(&stack, pop(&stack) + pop(&stack));
+        } else if (temp == '-') {
+            int b = pop(&stack);
+            int a = pop(&stack);
+            push(&stack,  a - b);
+        } else if (temp == '*') {
+            push(&stack, pop(&stack) * pop(&stack));
+        } else if (temp == '/') {
+            push(&stack, 1. / pop(&stack) * pop(&stack));
+        }
+    }
+    return pop(&stack);
 }
 
 int main() {
-    return 0;
+    printf("%d", ma_test());
 }

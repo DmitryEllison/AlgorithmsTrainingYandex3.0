@@ -1,3 +1,2 @@
-#include <iostream>
-#include ".\src\postfix_notation.cpp"
+#include ".\src\pretty_string.cpp"
 
