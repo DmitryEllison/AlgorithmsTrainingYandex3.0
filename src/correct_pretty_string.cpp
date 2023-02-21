@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <fstream>
 
 #define QUEUE_CAPACITY 16364
 typedef int T;
@@ -57,14 +58,19 @@ int ma_test() {
 
     /// read K
     int K;
-    std::cin >> K;
-    int temp_K = K;
+    std::ifstream stream;
+    stream.open("./input.txt");
+    if (!stream.is_open()) return -1;
+    stream >> K;
 
+    int temp_K = K;
     int max = 0;
     int temp_max = 0;
+    char char_read;
 
     /// read string line
-    for( char char_read = getchar(); char_read = std::getchar(), char_read != '\n'; ) {
+    while( stream.get(char_read)) {
+        if (char_read == 10) continue; // pass the '\n'
         push(&queue, char_read);
 
         if (elem_at(&queue, 0) == char_read)
@@ -93,6 +99,7 @@ int ma_test() {
             }
         }
     }
+    stream.close();
     return max;
 }
 
