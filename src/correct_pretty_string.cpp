@@ -50,3 +50,52 @@ bool clear(queue_t* queue) {
     queue->first = 0;
     return true;
 }
+
+int ma_test() {
+    queue_t queue;
+    clear(&queue);
+
+    /// read K
+    int K;
+    std::cin >> K;
+    int temp_K = K;
+
+    int max = 0;
+    int temp_max = 0;
+
+    /// read string line
+    for( char char_read = getchar(); char_read = std::getchar(), char_read != '\n'; ) {
+        push(&queue, char_read);
+
+        if (elem_at(&queue, 0) == char_read)
+            ++temp_max;
+        else if (temp_K-- > 0) {
+            ++temp_max;
+            continue;
+        } else {
+            max = temp_max > max ? temp_max : max;
+            temp_max = 0;
+            temp_K = K;
+            pop(&queue);
+
+            for (int i = 1; i < K && i < queue.size; ++i) {
+                if (elem_at(&queue, 0) == elem_at(&queue, i))
+                    ++temp_max;
+                else if (temp_K-- > 0) {
+                    continue;
+                } else {
+                    max = temp_max > max ? temp_max : max;
+                    temp_max = 0;
+                    temp_K = K;
+                    pop(&queue);
+                    i = 1;
+                }
+            }
+        }
+    }
+    return max;
+}
+
+int main() {
+    printf("%d", ma_test());
+}

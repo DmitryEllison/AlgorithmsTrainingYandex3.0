@@ -3,4 +3,4 @@ project(algoritms_cpp)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(main.cp src/pretty_string.cpp)
+add_executable(AlgoritmsTrainingYandex3.0 main.cpp src/correct_pretty_string.cpp)
