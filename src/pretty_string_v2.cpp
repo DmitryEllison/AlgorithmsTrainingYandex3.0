@@ -1,3 +1,8 @@
+
+/**
+ * INCORRECT
+ */
+
 #include <iostream>
 #include <cstring>
 #include <fstream>
@@ -87,7 +92,7 @@ int ma_test() {
             continue;
         } else {
             max = temp_max > max ? temp_max : max;
-            temp_max = 0;
+            temp_max = 1;
             temp_K = K;
             pop(&queue);
 
@@ -98,13 +103,14 @@ int ma_test() {
                     continue;
                 } else {
                     max = temp_max > max ? temp_max : max;
-                    temp_max = 0;
+                    temp_max = 1;
                     temp_K = K;
                     pop(&queue);
                     i = 1;
                 }
             }
         }
+        max = temp_max > max ? temp_max : max;
     }
     stream.close();
     return max;
