@@ -52,6 +52,12 @@ bool clear(queue_t* queue) {
     return true;
 }
 
+/**
+ * Считываем элемент в очередь и сравниваем i элемент с первым
+ * находим для него максимальную длину его "красоты"
+ * удаляем его и продолжаем дальше
+ */
+
 int ma_test() {
     queue_t queue;
     clear(&queue);
@@ -70,9 +76,10 @@ int ma_test() {
 
     /// read string line
     while( stream.get(char_read)) {
-        if (char_read == 10) continue; // pass the '\n'
+        if (char_read == '\n') continue;
         push(&queue, char_read);
 
+        /// if read char is equal first char in queue
         if (elem_at(&queue, 0) == char_read)
             ++temp_max;
         else if (temp_K-- > 0) {
